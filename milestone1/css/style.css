@@ -1,0 +1,171 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: gray;
+    font-weight: 500;
+}
+.container{
+    width: 70vw;
+    margin: 20px auto;
+}
+#app{
+    display: flex;
+}
+.left_box{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+.contacts_header{
+    background-color: silver;
+    height: 4rem;
+    flex-shrink: 0;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+}
+.user{
+    background-color: lightcyan;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.alerts{
+    background-color: lightblue;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}
+.alert_icon{
+    height: 45px;
+    width: 220px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: lightblue;
+}
+.search{
+    padding: 10px 15px;
+    display: flex;
+    background-color: lightgray;
+}
+.search_icon{
+    display: flex;
+    width: 70px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid lightgray;
+    background-color: #fff;
+    color: lightgray;
+}
+#searchbar{
+    padding: 5px;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-left: none;
+}
+.open_contacts{
+    height: calc(100vh - 290px);
+    flex-grow: 1;
+    background-color: #fff;
+}
+.header, .footer{
+    background-color: silver;
+    height: 65px;
+    width: calc(100vw - 61.25rem);
+    border-left: 1px solid gray;
+}
+.main{
+    height: 46.875rem;
+    background-image: url(../img/mine.jpg);
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+.friend{
+    width: 100%;
+    height: 70px;
+    padding: 10px;
+    border-bottom: .0125rem solid lightgray;
+    display: flex;
+    justify-content: space-between;
+}
+.right_header_icons{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-right: 10px;
+    color: gray;
+}
+
+.friend_icon{
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+}
+.friend_icon img{
+    height: 50px;
+    border-radius: 50%;
+}
+.friend_name{
+    display: flex;
+    flex-direction: column;
+    margin-right: 100px;
+    width: 1000px;
+}
+.sms_get, .sms_sent{
+    width: 40%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    overflow: scroll;
+}
+.get_color{
+    background-color: #fff;
+}
+.sent_color{
+    background-color: lightgreen;
+}
+
+.sent_row, .get_row{
+    width: 100%;
+    height: 6.25rem;
+    display: flex;
+    justify-content: center;
+    padding: 0px 100px;
+    flex-direction: column;
+}
+.sms_sent{
+    align-self: flex-end;
+}
+.sms_clock{
+    align-self: flex-end;
+    margin-left: 10px;
+    font-size: .75rem;
+    padding: .1875rem .3125rem;
+}
+.sms_text{
+    padding: 15px 20px;
+}
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 25px;
+    color: gray;
+}
+#footer_searchbar{
+    width: 700px;
+    padding: 10px;
+}
