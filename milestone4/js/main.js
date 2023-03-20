@@ -5,19 +5,14 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            active: 0,
             new_sms: '',
-            my_sms: [],
-            selected_contact: null,
-            friend_message: false,
             friend_sms: '',
-            search_key: '',
+            activeContact: null,
             contacts: [
                 {
                     name: 'Michele',
                     avatar: 'img/avatar_1.jpg',
                     visible: true,
-                    id:1,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -34,13 +29,12 @@ createApp({
                             message: 'Tutto fatto!',
                             status: 'received'
                         }
-                    ]
+                    ],
                 },
                 {
                     name: 'Fabio',
                     avatar: 'img/avatar_2.jpg',
                     visible: true,
-                    id:2,
                     messages: [
                         {
                             date: '20/03/2020 16:30:00',
@@ -57,13 +51,12 @@ createApp({
                             message: 'Mi piacerebbe ma devo andare a fare la spesa.',
                             status: 'sent'
                         }
-                    ]
+                    ],
                 },
                 {
                     name: 'Samuele',
                     avatar: 'img/avatar_3.jpg',
                     visible: true,
-                    id:3,
                     messages: [
                         {
                             date: '28/03/2020 10:10:40',
@@ -80,13 +73,12 @@ createApp({
                             message: 'Ah scusa!',
                             status: 'received'
                         }
-                    ]
+                    ],
                 },
                 {
                     name: 'Alessandro B.',
                     avatar: 'img/avatar_4.jpg',
                     visible: true,
-                    id:4,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -98,13 +90,12 @@ createApp({
                             message: 'Si, ma preferirei andare al cinema',
                             status: 'received'
                         }
-                    ]
+                    ],
                 },
                 {
                     name: 'Alessandro L.',
                     avatar: 'img/avatar_5.jpg',
                     visible: true,
-                    id:5,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -116,13 +107,12 @@ createApp({
                             message: 'Va bene, stasera la sento',
                             status: 'received'
                         }
-                    ]
+                    ],
                 },
                 {
                     name: 'Claudia',
                     avatar: 'img/avatar_5.jpg',
                     visible: true,
-                    id:6,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -139,13 +129,12 @@ createApp({
                             message: 'Nessuna nuova, buona nuova',
                             status: 'sent'
                         }
-                    ]  
+                    ],
                 },
                 {
                     name: 'Federico',
                     avatar: 'img/avatar_7.jpg',
                     visible: true,
-                    id:7,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -157,13 +146,12 @@ createApp({
                             message: 'Grazie per avermelo ricordato, le scrivo subito!',
                             status: 'received'
                         }
-                    ]
+                    ],
                 },
                 {
                     name: 'Davide',
                     avatar: 'img/avatar_8.jpg',
                     visible: true,
-                    id:8,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -186,37 +174,28 @@ createApp({
         }
         },
         methods: {
-            delete(){
-                this.new_sms.splice(element, 1);
-            },
-            isActive(i){
-                if(i === this.active){
-                    return 'active';
-                }
+            showConversation(index) {
+                this.activeContact = this.contacts[index];
             },
             sendNew(){
-                this.friend_message = false;
-                
                 if(this.new_sms.trim() !== ''){
-                    this.my_sms.push(this.new_sms);
-                    this.new_sms='';
+                    
+                    this.activeContact.messages.push({
+                        date: new Date().toLocaleString(),
+                        message: this.new_sms,
+                        status: 'sent'
+                    });
+                    
+                    
+                    
+                    setTimeout(() => {
+                        this.activeContact.messages.push({
+                            date: new Date().toLocaleString(),
+                            message: 'Ok',
+                            status: 'received'
+                        });
+                    }, 2000);
                 }
-                setTimeout(() => {
-                    this.friend_message = true;
-                    this.friend_sms = "Ok";
-                }, 1000);
-                
-            },
-            search(){
-                console.log('workit');
-               this.contacts = this.contacts.filter(element => element.includes(this.search_key));
-            },
-            friends_filter(){
-               return this.contacts 
             }
         }
-        
-       /*  delete(){
-
-        } */
 }).mount('#app')

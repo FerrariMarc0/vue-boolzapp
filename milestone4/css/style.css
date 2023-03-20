@@ -10,6 +10,7 @@ body{
 .container{
     width: 70vw;
     margin: 20px auto;
+    position: relative;
 }
 #app{
     display: flex;
@@ -86,7 +87,7 @@ body{
     height: calc(100vh - 290px);
     flex-grow: 1;
     background-color: #fff;
-    overflow-y: auto;
+    overflow: auto;
 }
 .header, .footer{
     background-color: silver;
@@ -95,11 +96,10 @@ body{
     border-left: 1px solid gray;
 }
 .main{
-    height: 46.875rem;
     background-image: url(../img/mine.jpg);
     display: flex;
     flex-direction: column;
-    overflow: auto;
+    height: 43.75rem;
 }
 .friend{
     width: 100%;
@@ -169,11 +169,12 @@ body{
 }
 .footer{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    padding: 0 20px;
     font-size: 25px;
     color: gray;
+    position: absolute;
+    bottom: 0;
 }
 #footer_searchbar{
     width: 700px;

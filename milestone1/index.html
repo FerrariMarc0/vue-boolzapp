@@ -45,7 +45,7 @@
 
 
                     <div class="open_contacts">
-                        <div class="friend" v-for="(item, index, name, avatar) in contacts">
+                        <div class="friend" v-for="(item, index) in contacts" @click="showConversation(index)">
                             <div class="friend_icon">
                                 <img :src="item.avatar" alt="avatar">
                             </div>
@@ -77,20 +77,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="main">
+                <div class="main" v-if="activeContact">
 
-                    <div class="sent_row">
-                        <div class="sms_sent sent_color">
-                            <span class="sms_text">Hai finito in tempo la milestone 1?</span>
-                            <span class="sms_clock"><small>20:00</small></span>
+                    <div v-for="(message, index) in activeContact.messages">
+                        <div class="sent_row" v-if="message.from === 'me'">
+                            <div class="sms_sent sent_color">
+                                <span class="sms_text">{{messages[i].text}}</span>
+                                <span class="sms_clock"><small>{{message.time}}</small></span>
+                            </div>
                         </div>
-                    </div>
-                    
-
-                    <div class="get_row">
-                        <div class="sms_get get_color">
-                            <span class="sms_text">{{contacts[0].messages[0].message}}</span>
-                            <span class="sms_clock"><small>20:00</small></span>
+                        <div class="get_row" v-else>
+                            <div class="sms_get get_color">
+                                <span class="sms_text">{{message.text}}</span>
+                                <span class="sms_clock"><small>{{message.time}}</small></span>
+                            </div>
                         </div>
                     </div>
                     

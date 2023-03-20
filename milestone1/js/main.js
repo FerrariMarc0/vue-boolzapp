@@ -1,10 +1,11 @@
-'use strict';
+
 
 const { createApp } = Vue
 
 createApp({
     data() {
         return {
+            activeContact: null,
             contacts: [
                 {
                     name: 'Michele',
@@ -165,9 +166,14 @@ createApp({
                             message: 'OK!!',
                             status: 'received'
                         }
-                    ],
+                    ]
                 }
             ]
         }
+        },
+        methods: {
+            showConversation(index) {
+                this.activeContact = this.contacts[index];
+            }
         }
 }).mount('#app')
