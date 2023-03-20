@@ -8,6 +8,7 @@ createApp({
             new_sms: '',
             friend_sms: '',
             activeContact: null,
+            searchName: '',
             contacts: [
                 {
                     name: 'Michele',
@@ -111,7 +112,7 @@ createApp({
                 },
                 {
                     name: 'Claudia',
-                    avatar: 'img/avatar_5.jpg',
+                    avatar: 'img/avatar_6.jpg',
                     visible: true,
                     messages: [
                         {
@@ -160,7 +161,7 @@ createApp({
                         },
                         {
                             date: '10/01/2020 15:50:00',
-                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+                            message: "No, l'ho già mangiata ieri, ordiniamo sushi!",
                             status: 'sent'
                         },
                         {
@@ -176,6 +177,7 @@ createApp({
         methods: {
             showConversation(index) {
                 this.activeContact = this.contacts[index];
+                console.log(this.activeContact)
             },
             sendNew(){
                 if(this.new_sms.trim() !== ''){
@@ -183,7 +185,7 @@ createApp({
                     this.activeContact.messages.push({
                         date: new Date().toLocaleString(),
                         message: this.new_sms,
-                        status: 'sent'
+                        type: 'sent_color'
                     });
                     
                     
@@ -192,10 +194,13 @@ createApp({
                         this.activeContact.messages.push({
                             date: new Date().toLocaleString(),
                             message: 'Ok',
-                            status: 'received'
+                            type: 'get_color'
                         });
                     }, 2000);
+                    this.new_sms= '';
                 }
             }
+            
         }
+        
 }).mount('#app')

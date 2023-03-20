@@ -60,14 +60,14 @@
                 </div>
             </div>
 
-            <div class="right_box">
+            <div class="right_box" v-if="activeContact">
                 <div class="header">
                     <div class="friend">
-                        <div class="friend_icon" v-if="activeContact">
+                        <div class="friend_icon">
                             <img :src="activeContact.avatar" alt="avatar">
                         </div>
                         <div class="friend_name">
-                            <span>{{contacts.name}}</span>
+                            <span>{{activeContact.name}}</span>
                             <span><small>Ultimo messaggio oggi alle 12:00</small></span>
                         </div>
                         <div class="right_header_icons">
@@ -80,16 +80,16 @@
                 <div class="main" v-if="activeContact">
 
                     <div>
-                        <div class="sent_row" v-for="sms in new_sms">
-                            <div class="sms_sent sent_color">
-                                <span class="sms_text">{{sms}}</span>
-                                <span class="sms_clock"><small>{{sms.date}}</small></span>
+                        <div class="get_row" v-for="(message, index) in activeContact.messages">
+                            <div class="sms_get get_color" :class="message.type">
+                                <span class="sms_text">{{message.message}}</span>
+                                <span class="sms_clock"><small></small></span>
                             </div>
                         </div>
-                        <div class="get_row" v-for="(message, index) in activeContact.messages">
-                            <div class="sms_get get_color">
-                                <span class="sms_text">{{message.message}}</span>
-                                <span class="sms_clock"><small>{{message.date}}</small></span>
+                        <div class="sent_row">
+                            <div class="sms_sent sent_color">
+                                <span class="sms_text">{{new_sms}}</span>
+                                <span class="sms_clock"><small></small></span>
                             </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                 </div>
                 <div class="footer">
                     <div><i class="fa-regular fa-face-smile"></i></div>
-                    <div><input @keyup.enter="sendNew" v-model="my_sms" type="text" name="search" id="footer_searchbar" placeholder="Scrivi un messaggio"></div>
+                    <div><input @keyup.enter="sendNew" v-model="new_sms" type="text" name="search" id="footer_searchbar" placeholder="Scrivi un messaggio"></div>
                     <div><i class="fa-solid fa-microphone"></i></div>
                 </div>
             </div>
