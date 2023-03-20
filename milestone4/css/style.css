@@ -3,35 +3,48 @@
     margin: 0;
     box-sizing: border-box;
 }
+
 body{
     background: linear-gradient(180deg, rgba(6,150,136,1) 15%, rgba(219,219,210,1) 15%);
     font-family: 'Lato', sans-serif;
 }
+
 .container{
     width: 70vw;
     margin: 20px auto;
     position: relative;
 }
-#app{
+
+#app, .left-box, .contacts_header, .user, .alerts, .search, .search_icon,
+.main, .friend, .right_header_icons, .friend_name, 
+.sms_get, .sms_sent, .sent_row, .get_row, .footer{
     display: flex;
 }
+
+.left_box, .user, .main, .friend_name, .sent_row, .get_row{
+    flex-direction: column;
+}
+
+.get_color, .open_contacts, .search_icon, .alert_icon{
+    background-color: #fff;
+}
+
 .left_box{
     width: 30%;
-    display: flex;
-    flex-direction: column;
     flex-shrink: 0;
 }
+
 .contacts_header{
     background-color: silver;
     height: 4rem;
     flex-shrink: 0;
-    display: flex;
-    padding: 10px;
+    padding: .625rem;
     align-items: center;
 }
+
 .user_avatar img{
-    height: 50px;
-    width: 50px;
+    height: 3.125rem;
+    width: 3.125rem;
     object-fit: cover;
     border-radius: 50%;
     margin-right: 10px;
@@ -39,110 +52,105 @@ body{
 
 .user{
     background-color: lightcyan;
-    display: flex;
-    flex-direction: column;
     flex-grow: 1;
 }
+
 .alerts{
     background-color: lightblue;
-    height: 60px;
-    display: flex;
+    height: 3.75rem;
     align-items: center;
-    padding: 15px;
+    padding: .9375rem;
 }
+
 .alert_icon{
-    height: 40px;
-    width: 220px;
+    height: 2.5rem;
+    width: 13.75rem;
     border-radius: 50%;
-    background-color: #fff;
-    margin-right: 10px;
-    display: flex;
+    margin-right: .625rem;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: lightblue;
 }
+
 .search{
-    padding: 10px 15px;
-    display: flex;
+    padding: .625rem .9375rem;
     background-color: lightgray;
 }
+
 .search_icon{
-    display: flex;
-    width: 70px;
-    height: 30px;
+    width: 4.375rem;
+    height: 1.875rem;
     justify-content: center;
     align-items: center;
-    border: 1px solid lightgray;
-    background-color: #fff;
+    border: .0625rem solid lightgray;
     color: lightgray;
 }
+
 #searchbar{
-    padding: 5px;
+    padding: .3125rem;
     width: 100%;
-    border: 1px solid lightgray;
+    border: .0625rem solid lightgray;
     border-left: none;
 }
+
 .open_contacts{
-    height: calc(100vh - 290px);
+    height: calc(100vh - 18.125rem);
     flex-grow: 1;
-    background-color: #fff;
     overflow: auto;
 }
+
 .header, .footer{
     background-color: silver;
-    height: 65px;
+    height: 4.0625rem;
     width: calc(100vw - 61.25rem);
-    border-left: 1px solid gray;
+    border-left: .0625rem solid gray;
 }
+
 .main{
+    height: 46.875rem;
     background-image: url(../img/mine.jpg);
-    display: flex;
-    flex-direction: column;
-    height: 43.75rem;
+    overflow: auto;
 }
+
 .friend{
     width: 100%;
-    height: 70px;
-    padding: 10px;
+    height: 4.375rem;
+    padding: .625rem;
     border-bottom: .0125rem solid lightgray;
-    display: flex;
     justify-content: space-between;
 }
+
 .right_header_icons{
-    display: flex;
-    gap: 10px;
+    gap: .625rem;
     align-items: center;
-    margin-right: 10px;
+    margin-right: .625rem;
     color: gray;
 }
 
 .friend_icon{
-    height: 50px;
-    width: 50px;
-    margin-right: 10px;
+    height: 3.125rem;
+    width: 3.125rem;
+    margin-right: .625rem;
 }
+
 .friend_icon img{
-    height: 50px;
+    height: 3.125rem;
     border-radius: 50%;
 }
 
 .friend_name{
-    display: flex;
-    flex-direction: column;
-    margin-right: 100px;
+    margin-right: 6.25rem;
     width: 93.75rem;
 }
+
 .sms_get, .sms_sent{
     width: 40%;
-    border-radius: 10px;
-    display: flex;
+    border-radius: .625rem;
     justify-content: space-between;
     overflow: scroll;
 }
-.get_color{
-    background-color: #fff;
-}
+
 .sent_color{
     background-color: lightgreen;
 }
@@ -150,33 +158,34 @@ body{
 .sent_row, .get_row{
     width: 100%;
     height: 6.25rem;
-    display: flex;
     justify-content: center;
-    padding: 0px 100px;
-    flex-direction: column;
+    padding: 0px 6.25rem;
 }
+
 .sms_sent{
     align-self: flex-end;
 }
+
 .sms_clock{
     align-self: flex-end;
-    margin-left: 10px;
+    margin-left: .625rem;
     font-size: .75rem;
     padding: .1875rem .3125rem;
 }
 .sms_text{
-    padding: 15px 20px;
+    padding: .9375rem 1.25rem;
 }
+
 .footer{
-    display: flex;
     justify-content: space-around;
     align-items: center;
-    font-size: 25px;
+    font-size: 1.5625rem;
     color: gray;
     position: absolute;
     bottom: 0;
 }
+
 #footer_searchbar{
-    width: 700px;
-    padding: 10px;
+    width: 43.75rem;
+    padding: .625rem;
 }

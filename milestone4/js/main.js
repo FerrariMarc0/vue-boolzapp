@@ -1,11 +1,11 @@
-
+'use strict';
 
 const { createApp } = Vue
 
 createApp({
     data() {
         return {
-            new_sms: '',
+            new_sms: '',   
             friend_sms: '',
             activeContact: null,
             searchName: '',
@@ -175,32 +175,27 @@ createApp({
         }
         },
         methods: {
-            showConversation(index) {
-                this.activeContact = this.contacts[index];
+            showConversation(index) { 
+                this.activeContact = this.contacts[index]
                 console.log(this.activeContact)
             },
-            sendNew(){
+            sendNew(){  /* NEW-USER-MESSAGE */
                 if(this.new_sms.trim() !== ''){
                     
-                    this.activeContact.messages.push({
-                        date: new Date().toLocaleString(),
-                        message: this.new_sms,
-                        type: 'sent_color'
+                this.activeContact.messages.push({
+                    date: new Date().toLocaleString(),
+                    message: this.new_sms,
+                    type: 'sent_color'
+                });
+                setTimeout(() => {   /*  AUTO-FEEDBACK */
+                    this.activeContact.messages.push({      
+                    date: new Date().toLocaleString(),      
+                    message: 'Ok',
+                    type: 'get_color'
                     });
-                    
-                    
-                    
-                    setTimeout(() => {
-                        this.activeContact.messages.push({
-                            date: new Date().toLocaleString(),
-                            message: 'Ok',
-                            type: 'get_color'
-                        });
-                    }, 2000);
-                    this.new_sms= '';
-                }
-            }
-            
+                }, 2000);
+            this.new_sms= '';
         }
-        
+        }
+    }
 }).mount('#app')
