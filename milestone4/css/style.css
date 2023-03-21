@@ -29,6 +29,18 @@ body{
     background-color: #fff;
 }
 
+.contacts_header, .alerts, .alert_icon, 
+.search_icon, .right_header_icons, .footer {
+    align-items: center;   
+}
+
+.alert_icon, .search_icon, .sent_row, .get_row{
+    justify-content: center;
+}
+
+.friend, .sms_get, .sms_sent{
+    justify-content: space-between;
+}
 .left_box{
     width: 30%;
     flex-shrink: 0;
@@ -39,7 +51,6 @@ body{
     height: 4rem;
     flex-shrink: 0;
     padding: .625rem;
-    align-items: center;
 }
 
 .user_avatar img{
@@ -58,7 +69,6 @@ body{
 .alerts{
     background-color: lightblue;
     height: 3.75rem;
-    align-items: center;
     padding: .9375rem;
 }
 
@@ -67,8 +77,6 @@ body{
     width: 13.75rem;
     border-radius: 50%;
     margin-right: .625rem;
-    justify-content: center;
-    align-items: center;
     font-size: 1.25rem;
     color: lightblue;
 }
@@ -81,8 +89,6 @@ body{
 .search_icon{
     width: 4.375rem;
     height: 1.875rem;
-    justify-content: center;
-    align-items: center;
     border: .0625rem solid lightgray;
     color: lightgray;
 }
@@ -118,12 +124,10 @@ body{
     height: 4.375rem;
     padding: .625rem;
     border-bottom: .0125rem solid lightgray;
-    justify-content: space-between;
 }
 
 .right_header_icons{
     gap: .625rem;
-    align-items: center;
     margin-right: .625rem;
     color: gray;
 }
@@ -147,7 +151,6 @@ body{
 .sms_get, .sms_sent{
     width: 40%;
     border-radius: .625rem;
-    justify-content: space-between;
     overflow: scroll;
 }
 
@@ -158,7 +161,6 @@ body{
 .sent_row, .get_row{
     width: 100%;
     height: 6.25rem;
-    justify-content: center;
     padding: 0px 6.25rem;
 }
 
@@ -178,7 +180,6 @@ body{
 
 .footer{
     justify-content: space-around;
-    align-items: center;
     font-size: 1.5625rem;
     color: gray;
     position: absolute;
