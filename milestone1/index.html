@@ -7,106 +7,115 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/style.css">
     <title>Boolzapp</title>
 </head>
+
 <body>
-    <div class="container">
+    <div id="screen">
+        <!-- VUE DOOR -->
         <div id="app">
-            <div class="left_box">
-                <div class="contacts_header">
-                    <div class="user_avatar">
-                        <img src="img/01.jpg" alt="friend">
-                    </div>
-                    <div class="friend_name">
-                        <span>Marcof</span>
-                    </div>
-                    <div class="right_header_icons">
-                        <div><i class="fa-solid fa-magnifying-glass"></i></div>
-                        <div><i class="fa-solid fa-paperclip"></i></div>
-                        <div><i class="fa-solid fa-ellipsis-vertical"></i></div>
-                    </div>
-                </div>
-                <div class="user">
-                    <div class="alerts">
-                        <div class="alert_icon">
-                            <i class="fa-solid fa-bell-slash"></i>
-                        </div>
-                        <div class="friend_name">
-                            <span>Ricevi notifiche di nuovi messaggi</span>
-                            <a><small>Attiva notifiche desktop</small></a>
-                        </div>
-                    </div>
-                    <div class="search">
-                        <div class="search_icon"><i class="fa-solid fa-magnifying-glass"></i></div>
-                        <input type="text" name="search" id="searchbar" placeholder="Cerca o inizia una nuova chat">
-                    </div>
-
-
-                    <div class="open_contacts">
-                        <div class="friend" v-for="(item, index) in contacts" @click="showConversation(index)">
-                            <div class="friend_icon">
-                                <img :src="item.avatar" alt="avatar">
-                            </div>
-                            <div class="friend_name">
-                                <span>{{item.name}}</span>
-                                <span><small>Ultimo messaggio ricevuto</small></span>
-                            </div>
-                            <div class="last_sms"><span><small>12.00</small></span></div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="right_box">
+            <!-- LEFT BOX  -->
+            <div id="contacts_box">
+                <!-- CONTACTS HEADER  -->
                 <div class="header">
-                    <div class="friend">
-                        <div class="friend_icon">
-                            <img src="img/avatar_1.jpg" alt="">
-                        </div>
-                        <div class="friend_name">
-                            <span>Pippo</span>
-                            <span><small>Ultimo messaggio oggi alle 12:00</small></span>
-                        </div>
-                        <div class="right_header_icons">
-                            <div><i class="fa-solid fa-magnifying-glass"></i></div>
-                            <div><i class="fa-solid fa-paperclip"></i></div>
-                            <div><i class="fa-solid fa-ellipsis-vertical"></i></div>
-                        </div>
+                    <div class="profile_image">
+                        <img src="img/avatar_4.jpg" alt="myImg">
+                    </div>
+                    <div class="user_name">
+                        Marcof
+                    </div>
+                    <div class="icons">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
                     </div>
                 </div>
-                <div class="main" v-if="activeContact">
+                <!-- /CONTACTS HEADER  -->
+                <!-- CONTACTS MAIN  -->
+                <div class="main">
+                    <!-- ALERTS AREA  -->
+                    <div class="alert">
+                        <div class="alert_icon"><i class="fa-solid fa-bell-slash"></i></div>
+                        <div>
+                            <div>Ricevi notifiche di nuovi messaggi</div>
+                            <div><a href="#">Attiva notifiche desktop</a></div>
+                        </div>
+                    </div>
+                    <!-- /ALERTS AREA  -->
+                    <!-- SEAR(C)HAT  -->
+                    <div class="search_bar">
+                        <label class="none" for="user_search">Search User</label>
+                        <input type="text" name="user_search" id="user_search" placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome;">
+                    </div>
+                    <!-- /SEAR(C)HAT -->
+                    <!-- CHAT LIST -->
+                    <div class="user_list">
+                        <div class="user" v-for="contact in contacts">
+                            <div class="profile_image">
+                                <img :src="contact.avatar" alt="image">
+                            </div>
+                            <div class="message_name">
+                                <div>{{contact.name}}</div>
+                                <div class="text_small">Ultimo messaggio</div>
+                            </div>
+                            <div class="info text_small">3.30</div>
+                        </div>
+                    </div>
+                    <!-- /CHAT LIST -->
+                </div>
+                <!-- /CONTACTS MAIN  -->
+            </div>
+            <!-- /LEFT BOX  -->
 
-                    <div v-for="(message, index) in activeContact.messages">
-                        <div class="sent_row" v-if="message.from === 'me'">
-                            <div class="sms_sent sent_color">
-                                <span class="sms_text">{{messages[i].text}}</span>
-                                <span class="sms_clock"><small>{{message.time}}</small></span>
-                            </div>
-                        </div>
-                        <div class="get_row" v-else>
-                            <div class="sms_get get_color">
-                                <span class="sms_text">{{message.text}}</span>
-                                <span class="sms_clock"><small>{{message.time}}</small></span>
-                            </div>
+            <!-- RIGHT BOX  -->
+            <div id="chat_box" v-for="user in contacts">
+                <!-- CHAT HEADER  -->
+                <div class="header">
+                    <div class="profile_image">
+                        <img :src="user.avatar" alt="img">
+                    </div>
+                    <div class="user_name">
+                        <div class="name">{{user.name}}</div>
+                        <div class="small_text">Ultimo accesso</div>
+                    </div>
+                    <div class="icons">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+                <!-- /CHAT HEADER  -->
+                <!-- MAIN CHAT  -->
+                <div class="main">
+                    <div class="message_row" v-for="message in user.messages">
+                        <div class="message_body" :class="message.status">
+                            <div>{{message.message}}</div>
+                            <div class="data_message smaller_text">12:09</div>
                         </div>
                     </div>
-                    
                 </div>
+                <!-- /MAIN CHAT  -->
+                <!-- SEND MESSAGE  -->
                 <div class="footer">
                     <div><i class="fa-regular fa-face-smile"></i></div>
-                    <div><input type="text" name="search" id="footer_searchbar" placeholder="Cerca o inizia una nuova chat"></div>
+                    <label class="none" for="message">message</label>
+                    <input type="text" name="message" id="message">
                     <div><i class="fa-solid fa-microphone"></i></div>
                 </div>
+                <!-- /SEND MESSAGE  -->
             </div>
+            <!-- /RIGHT BOX  -->
         </div>
+        <!-- /VUE DOOR-->
     </div>
-        
 
-
+    <!-- VUE JS -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- /MAIN JAVASCRIPT --->
     <script src="js/main.js"></script>
+    <!-- /MAIN JAVASCRIPT --->
+
 </body>
 </html>
